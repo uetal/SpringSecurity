@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>all users</h1>
+<a href="/logout">выйти</a>
+<table border="1">
+    <tr>
+        <th>№</th>
+        <th>name</th>
+        <th>password</th>
+        <th>role</th>
+        <th>action</th>
+    </tr>
+
+    <tr th:each = "user: ${list}">
+        <td th:utext="${user.id}">№</td>
+        <td th:utext="${user.username}">Name</td>
+        <td th:utext="${user.password}">Password</td>
+        <td>
+            <div th:each="role : ${user.roles}">
+                <span th:inline="text">[[${role.name}]]</span><br>
+            </div>
+        </td>
+        <td>
+            <a th:href="@{'/admin/edit/'+${user.id}}">edit</a>
+            <a th:href="@{'/admin/delete/'+${user.id}}">delete</a>
+        </td>
+    </tr>
+</table>
+<a href="/admin/new">Add user</a>
+</body>
+</html>

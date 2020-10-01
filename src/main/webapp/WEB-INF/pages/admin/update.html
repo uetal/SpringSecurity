@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:tf="http://www.springframework.org/tags/form">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+</head>
+<body>
+<h1>update User</h1>
+<h1 th:text="${user.id}">User id</h1>
+<form method="POST"  action="/admin/edit">
+    <input type="hidden" name="id" th:value="${user.id}"/>
+
+    <label for="name">Name</label>
+    <input name="name" type="text" id="name"/>
+
+    <br>
+
+    <label for="password">Password</label>
+    <input name="password" type="text" id="password"/>
+
+    <br>
+
+    <select name="roles">
+        <option th:value="2" th:utext="ADMIN">2</option>
+        <option th:value="1" th:utext="USER">1</option>
+    </select>
+
+    <input type="submit" value="Update User">
+</form>
+
+</body>
+</html>
+
